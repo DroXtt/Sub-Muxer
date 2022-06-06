@@ -89,7 +89,7 @@ async def MergeSub(filePath: str, subPath: str, user_id):
         shell=True,
     )
     orgFilePath = shutil.move(
-        f"./downloads/{str(user_id)}/[@yashoswalyo]_softmuxed_video.mkv", filePath
+        f"./downloads/{str(user_id)}/{media.file_name}.mkv", filePath
     )
     return orgFilePath
 
@@ -129,7 +129,7 @@ async def MergeSubNew(filePath: str, subPath: str, user_id, file_list):
         f"ffmpeg -hide_banner {input_files}-map 0:v:0 -map 0:a -map 0:s? {maps}{metadata}-c:v copy -c:a copy -c:s srt './downloads/{str(user_id)}/{media.file_name}.mkv'",
         shell=True,
     )
-    return f"./downloads/{str(user_id)}/[@yashoswalyo]_softmuxed_video.mkv"
+    return f"./downloads/{str(user_id)}/{media.file_name}.mkv"
 
 
 async def cult_small_video(video_file, output_directory, start_time, end_time, format_):
