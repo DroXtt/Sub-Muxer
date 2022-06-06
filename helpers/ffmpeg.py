@@ -85,7 +85,7 @@ async def MergeSub(filePath: str, subPath: str, user_id):
     subTrack += 1
     print("Sub muxing")
     subprocess.call(
-        f"ffmpeg -hide_banner {input_files}-map 0:v:0 -map 0:a -map 0:s? {maps}{metadata}-c:v copy -c:a copy -c:s srt './downloads/{str(user_id)}/[@yashoswalyo]_softmuxed_video.mkv' ",
+        f"ffmpeg -hide_banner {input_files}-map 0:v:0 -map 0:a -map 0:s? {maps}{metadata}-c:v copy -c:a copy -c:s srt './downloads/{str(user_id)}/{media.file_name}.mkv' ",
         shell=True,
     )
     orgFilePath = shutil.move(
@@ -126,7 +126,7 @@ async def MergeSubNew(filePath: str, subPath: str, user_id, file_list):
         subTrack += 1
     print("Sub muxing")
     subprocess.call(
-        f"ffmpeg -hide_banner {input_files}-map 0:v:0 -map 0:a -map 0:s? {maps}{metadata}-c:v copy -c:a copy -c:s srt './downloads/{str(user_id)}/[@yashoswalyo]_softmuxed_video.mkv'",
+        f"ffmpeg -hide_banner {input_files}-map 0:v:0 -map 0:a -map 0:s? {maps}{metadata}-c:v copy -c:a copy -c:s srt './downloads/{str(user_id)}/{media.file_name}.mkv'",
         shell=True,
     )
     return f"./downloads/{str(user_id)}/[@yashoswalyo]_softmuxed_video.mkv"
