@@ -18,7 +18,7 @@ async def MergeVideo(input_file: str, user_id: int, message: Message, format_: s
     :param `format_`: Pass File Extension.
     :return: This will return Merged Video File Path
     """
-    output_vid = f"downloads/{str(user_id)}/[@yashoswalyo].{format_.lower()}"
+    output_vid = f"downloads/{str(user_id)}/{media.file_name}.{format_.lower()}"
     file_generator_command = [
         "ffmpeg",
         "-f",
@@ -81,7 +81,7 @@ async def MergeSub(filePath: str, subPath: str, user_id):
             subTrack += 1
     input_files += f"-i '{filePath}' -i '{subPath}' "
     maps += f"-map 1:s "
-    metadata += f"-metadata:s:s:{subTrack} title='Track {subTrack+1} - tg@yashoswalyo' "
+    metadata += f"-metadata:s:s:{subTrack} title='Track {subTrack+1}' "
     subTrack += 1
     print("Sub muxing")
     subprocess.call(
@@ -121,7 +121,7 @@ async def MergeSubNew(filePath: str, subPath: str, user_id, file_list):
     for j in range(1, (len(file_list))):
         maps += f"-map {j}:s "
         metadata += (
-            f"-metadata:s:s:{subTrack} title='Track {subTrack+1} - tg@yashoswalyo' "
+            f"-metadata:s:s:{subTrack} title='Track {subTrack+1}' "
         )
         subTrack += 1
     print("Sub muxing")
